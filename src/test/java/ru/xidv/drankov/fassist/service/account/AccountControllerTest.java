@@ -10,7 +10,9 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -26,16 +28,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
+@ActiveProfiles("dev")
 public class AccountControllerTest {
 
     @Autowired
-    MockMvc mvc;
+    private MockMvc mvc;
 
     JSONParser parser = new JSONParser();
 
     /**
      * Test case description:
-     *
+     * <p>
      * 1. create user new vlad
      * 2. get token
      * 3. open 2 accounts
@@ -43,7 +46,7 @@ public class AccountControllerTest {
      * 5. close one of accounts
      * 6. list all accounts
      * 7. check that one of account is closed
-     *
+     * <p>
      * * - error code in each request must be 0
      */
     @Test

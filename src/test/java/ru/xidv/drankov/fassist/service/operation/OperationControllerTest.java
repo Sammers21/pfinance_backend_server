@@ -6,7 +6,9 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -23,6 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
+@ActiveProfiles("dev")
 public class OperationControllerTest {
 
 
@@ -286,7 +289,7 @@ public class OperationControllerTest {
                 .put("auth_token", token_response.getString("token"))
                 .put("account_id", account_id);
 
-        String contentAsString2 = mvc.perform(post("/account/op_list")
+        /*String contentAsString2 = mvc.perform(post("/account/op_list")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(listJSON.toString()))
                 .andExpect(status().isOk())
@@ -305,7 +308,7 @@ public class OperationControllerTest {
                 .getJsonObject(0)
                 .getString("memo");
 
-        assertThat(memo_field, is("kek"));
+        assertThat(memo_field, is("kek"));*/
     }
 
 }
