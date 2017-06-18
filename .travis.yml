@@ -3,7 +3,7 @@ sudo: required
 
 services:
   - docker
-
+  - postgresql
 jdk:
   - oraclejdk8
 
@@ -11,6 +11,7 @@ notifications:
   email: false
 
 before_install:
+  - sudo /etc/init.d/postgresql stop
   - sudo docker login -u="sammers" -p="$DOCKER_PASSWORD"
   - sudo docker build --no-cache=true -t fpostgres:latest ./postgres
   - sudo docker tag fpostgres:latest sammers/fpostgres:lastest
