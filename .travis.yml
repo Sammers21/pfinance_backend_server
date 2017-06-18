@@ -15,6 +15,7 @@ before_install:
   - sudo docker build --no-cache=true -t fpostgres:latest ./postgres
   - sudo docker tag fpostgres:latest sammers/fpostgres:lastest
   - sudo docker push sammers/fpostgres:lastest
+  - scripts/runPostgres.sh
 
 script:
-  - mvn clean install
+  - sudo mvn clean install
