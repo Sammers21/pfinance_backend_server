@@ -1,0 +1,20 @@
+language: java
+sudo: required
+
+services:
+  - docker
+
+jdk:
+  - oraclejdk8
+
+notifications:
+  email: false
+
+before_install:
+  - sudo docker login -u="sammers" -p="$DOCKER_PASSWORD"
+  - sudo docker build --no-cache=true -t fpostgres:latest ./postgres
+  - sudo docker tag fpostgres:latest sammers/fpostgres:lastest
+  - sudo docker push sammers/fpostgres:lastest
+
+script:
+  - mvn clean install
