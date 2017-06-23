@@ -7,3 +7,5 @@ Code-coverage: [![codecov](https://codecov.io/gh/Sammers21/pfinance_backend_serv
 # mvn clean install
 # docker-compose up -d
 ```
+# Api docs
+See Api documentation here: [sammers21.github.io](https://sammers21.github.io/)
