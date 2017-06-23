@@ -17,9 +17,7 @@ before_script:
 script:
   - sudo mvn clean install
   - sudo docker-compose build
-  # run code-coverage check
-  - sudo mvn cobertura:cobertura
 
 # trigger code-coverage service
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -s https://codecov.io/bash) -t 24a90402-c015-43ce-83cb-d95aa82b388c
