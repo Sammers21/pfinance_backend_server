@@ -1,13 +1,12 @@
 package ru.xidv.drankov.fassist.service.account;
 
-import io.vertx.core.AbstractVerticle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.xidv.drankov.fassist.dm.dao.Account;
 import ru.xidv.drankov.fassist.dm.dmr.AccountRepository;
 
 @Service
-public class AccountService extends AbstractVerticle {
+public class AccountService{
 
     private final AccountRepository accountRepository;
 

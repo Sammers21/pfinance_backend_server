@@ -35,6 +35,7 @@ public class CategoryController {
     ResponseEntity<?> new_parent(
             @RequestBody AuthNameDescTypeJSON JSON
     ) {
+        log.info("category new_parent call " + JSON);
         User user;
         try {
             user = authService.getUserByToken(JSON.getAuth_token());
@@ -55,6 +56,7 @@ public class CategoryController {
     ResponseEntity<?> new_child(
             @RequestBody AuthNameDescTypeParentJSON JSON
     ) {
+        log.info("category new_child call " + JSON);
         User user;
         Category parent;
         try {
@@ -76,6 +78,7 @@ public class CategoryController {
     ResponseEntity<?> delete(
             @RequestBody AuthCategoryJSON JSON
     ) {
+        log.info("category delete call " + JSON);
         User user;
         Category category_to_delete;
         try {
@@ -108,6 +111,7 @@ public class CategoryController {
     ResponseEntity<?> list(
             @RequestBody TokenJSON JSON
     ) {
+        log.info("category list call " + JSON);
         User user;
         List<Category> categories;
         try {

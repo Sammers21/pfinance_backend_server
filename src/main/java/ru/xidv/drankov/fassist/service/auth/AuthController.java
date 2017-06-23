@@ -33,7 +33,7 @@ public class AuthController extends AbstractVerticle {
     ResponseEntity<?> new_user(
             @RequestBody LogAndPassJSON logAndPassJSON
     ) {
-
+        log.info("auth new call " + logAndPassJSON);
         //login existed case
         if (ur.findByLogin(logAndPassJSON.getLogin()) != null) {
             return new ResponseEntity<>(new ErrorCodeJSON(1), HttpStatus.OK);
@@ -49,6 +49,7 @@ public class AuthController extends AbstractVerticle {
     ResponseEntity<?> auth(
             @RequestBody LogAndPassJSON logAndPassJSON
     ) {
+        log.info("auth auth call " + logAndPassJSON);
         User byLogin = ur.findByLogin(logAndPassJSON.getLogin());
 
         //login is not existed case
@@ -66,6 +67,7 @@ public class AuthController extends AbstractVerticle {
     ResponseEntity<?> check(
             @RequestBody PureTokenJSON tok
     ) {
+        log.info("auth check call " + tok);
         int code = tr.findByToken(tok.getToken()) == null ? 1 : 0;
         return new ResponseEntity<>(new ErrorCodeJSON(code), HttpStatus.OK);
     }

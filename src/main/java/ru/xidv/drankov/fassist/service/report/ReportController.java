@@ -39,6 +39,7 @@ public class ReportController {
     ResponseEntity<?> since(
             @RequestBody TokenAndAcIDRequestJSON JSON
     ) {
+        log.info("report since call " + JSON);
         Account account;
         try {
             account = accountService.getAccountById(JSON.getAccount_id());

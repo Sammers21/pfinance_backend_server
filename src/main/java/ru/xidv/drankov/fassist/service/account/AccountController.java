@@ -1,6 +1,5 @@
 package ru.xidv.drankov.fassist.service.account;
 
-import io.vertx.core.AbstractVerticle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +27,7 @@ import static ru.xidv.drankov.fassist.util.Response.error_code_1;
 
 @RestController
 @RequestMapping("/account")
-public class AccountController extends AbstractVerticle {
+public class AccountController {
     private final Logger log = LoggerFactory.getLogger(AccountController.class.getName());
     private final AuthService authService;
     private final CurrencyService currencyService;
@@ -40,6 +39,7 @@ public class AccountController extends AbstractVerticle {
             @RequestBody OpenAccountRequestJSON JSON
     ) {
 
+        log.info("account open call " + JSON);
         /////////////////Find user and currency/////////////////////////////////
 
         User user;
@@ -75,6 +75,7 @@ public class AccountController extends AbstractVerticle {
     ResponseEntity<?> close(
             @RequestBody TokenAndAcIDRequestJSON JSON
     ) {
+        log.info("account close call " + JSON);
         Account account;
         try {
             account = accountService.getAccountById(JSON.getAccount_id());
@@ -94,6 +95,7 @@ public class AccountController extends AbstractVerticle {
     ResponseEntity<?> list(
             @RequestBody TokenJSON JSON
     ) {
+        log.info("account list call " + JSON);
         User user;
         try {
             user = authService.getUserByToken(JSON.getAuth_token());

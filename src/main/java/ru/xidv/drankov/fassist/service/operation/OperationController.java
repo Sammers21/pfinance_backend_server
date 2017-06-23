@@ -1,6 +1,5 @@
 package ru.xidv.drankov.fassist.service.operation;
 
-import io.vertx.core.AbstractVerticle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +28,7 @@ import static ru.xidv.drankov.fassist.util.Response.error_code_1;
 
 @RestController
 @RequestMapping("/operation")
-public class OperationController extends AbstractVerticle {
+public class OperationController {
     private final Logger log = LoggerFactory.getLogger(OperationController.class.getName());
 
 
@@ -44,7 +43,7 @@ public class OperationController extends AbstractVerticle {
     ResponseEntity<?> commit(
             @RequestBody AuthAccountCat_IdSumJSON JSON
     ) {
-        log.info(JSON.toString());
+        log.info("operation call with "+JSON.toString());
 
         Category category_to_commit;
         Account account;
@@ -88,6 +87,7 @@ public class OperationController extends AbstractVerticle {
     ResponseEntity<?> add_tag(
             @RequestBody AuthOp_IdTagJSON JSON
     ) {
+        log.info("account list call "+ JSON);
         Operation operation;
         try {
             authService.getUserByToken(JSON.getAuth_token());
@@ -109,6 +109,7 @@ public class OperationController extends AbstractVerticle {
     ResponseEntity<?> add_memo(
             @RequestBody AuthOp_IdMemoJSON JSON
     ) {
+        log.info("account add_memo call "+ JSON);
         Operation op_to_memo;
         try {
             authService.getUserByToken(JSON.getAuth_token());
@@ -129,6 +130,7 @@ public class OperationController extends AbstractVerticle {
     ResponseEntity<?> add_notes(
             @RequestBody AuthOp_IdNotesJSON JSON
     ) {
+        log.info("account add_notes call "+ JSON);
         Operation op_to_memo;
         try {
             authService.getUserByToken(JSON.getAuth_token());
@@ -149,6 +151,7 @@ public class OperationController extends AbstractVerticle {
     ResponseEntity<?> with_tag(
             @RequestBody AuthTagJSON JSON
     ) {
+        log.info("account with_tag call "+ JSON);
         User user;
         try {
             user = authService.getUserByToken(JSON.getAuth_token());
