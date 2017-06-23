@@ -17,3 +17,9 @@ before_script:
 script:
   - sudo mvn clean install
   - sudo docker-compose build
+  # run code-coverage check
+  - mvn cobertura:cobertura
+
+# trigger code-coverage service
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
