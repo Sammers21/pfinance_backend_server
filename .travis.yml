@@ -1,5 +1,6 @@
 language: java
 sudo: required
+install: true
 
 services:
   - docker
@@ -10,12 +11,8 @@ jdk:
 notifications:
   email: false
 
-before_install:
-  - sudo /etc/init.d/postgresql stop
-  - sudo docker login -u="sammers" -p="$DOCKER_PASSWORD"
-  - sudo docker build --no-cache=true -t fpostgres:latest ./postgres
-  - sudo docker tag fpostgres:latest sammers/fpostgres:lastest
-  - sudo docker push sammers/fpostgres:lastest
+before_script:
+  - sudo travis/travis_before.sh
 
 script:
   - sudo mvn clean install

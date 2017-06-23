@@ -3,5 +3,5 @@ Status: [![Build Status](https://travis-ci.org/Sammers21/pfinance_backend_server
 
 # Run server
 ```
-# ./setup.sh 
+# docker-compose up -d
 ```
